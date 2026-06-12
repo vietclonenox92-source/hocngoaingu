@@ -232,7 +232,7 @@
         // Xử lý text thành mảng câu hỏi
         function parseData(text) {
             quizData = [];
-            const lines = text.split("\n");
+            const lines = text.split(/\r?\n/);
             for (let line of lines) {
                 line = line.trim();
                 if (!line || !line.includes("|")) continue;
@@ -240,8 +240,8 @@
                 if (parts.length === 5) {
                     quizData.push({
                         question: parts[0],
-                        correct: parts[1],
-                        choices: [parts[2], parts[3], parts[4]]
+                        correct: parts[4],
+                        choices: [parts[1], parts[2], parts[3]]
                     });
                 }
             }
